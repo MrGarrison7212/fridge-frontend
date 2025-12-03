@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+.fridge-shell {
+  @apply min-h-screen;
+  @apply flex flex-col;
+  @apply bg-slate-50;
+}
+
+.fridge-header {
+  @apply px-6 py-4;
+  @apply bg-white border-b border-slate-200;
+  @apply flex items-center justify-between;
+}
+
+.fridge-title {
+  @apply text-xl font-bold;
+  @apply text-slate-800;
+}
+
+.fridge-add-btn {
+  @apply inline-flex items-center gap-2;
+  @apply px-4 py-2;
+  @apply rounded-full;
+  @apply bg-emerald-500 text-white text-sm font-medium;
+  @apply shadow hover:bg-emerald-600 transition;
+}
+
+.fridge-content {
+  @apply flex-1;
+  @apply p-6;
+}

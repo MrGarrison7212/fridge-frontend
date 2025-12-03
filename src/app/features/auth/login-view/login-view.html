@@ -1,0 +1,51 @@
+<div class="login-shell">
+  <div class="login-card">
+    <h1 class="login-title">
+      My Fridge
+    </h1>
+
+    <p class="login-subtitle">
+      Sign in to manage your fridge items
+    </p>
+
+    @if (errorMessage()) {
+      <div class="login-error">
+        {{ errorMessage() }}
+      </div>
+    }
+
+    <form class="login-form" (submit)="onSubmit($event)">
+      <label class="login-label">
+        <span class="login-label-text">Username</span>
+        <input
+          type="text"
+          class="login-input"
+          [value]="username()"
+          (input)="onUsernameChange(($any($event.target)).value)"
+        />
+      </label>
+
+      <label class="login-label">
+        <span class="login-label-text">Password</span>
+        <input
+          type="password"
+          class="login-input"
+          [value]="password()"
+          (input)="onPasswordChange(($any($event.target)).value)"
+        />
+      </label>
+
+      <button
+        type="submit"
+        class="login-submit-btn"
+        [disabled]="isLoading()"
+      >
+        @if (isLoading()) {
+          Logging in...
+        } @else {
+          Login
+        }
+      </button>
+    </form>
+  </div>
+</div>

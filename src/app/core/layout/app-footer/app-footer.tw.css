@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+.app-footer-shell {
+  @apply w-full;
+  @apply border-t border-slate-200;
+  @apply bg-surface;
+  @apply px-4 py-2;
+  @apply flex items-center justify-center;
+}
+
+.app-footer-text {
+  @apply text-xs text-slate-500;
+}
+
+.bg-surface {
+  background-color: var(--mat-sys-surface);
+}

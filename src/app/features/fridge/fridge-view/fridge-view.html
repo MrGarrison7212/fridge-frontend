@@ -4,14 +4,30 @@
       My Fridge – Items
     </div>
 
-    <button class="fridge-add-btn" type="button">
+    <button class="fridge-add-btn" type="button" (click)="onAddClick()">
       + Add item
     </button>
   </header>
 
   <main class="fridge-content">
-    <p class="text-slate-500">
-      Fridge table view coming soon...
-    </p>
+    @if (error()) {
+      <div class="fridge-error">
+        {{ error() }}
+      </div>
+    }
+
+    <app-fridge-search
+      [search]="search()"
+      (searchChange)="onSearchChange($event)"
+    ></app-fridge-search>
+
+    @if (isLoading()) {
+      <div class="fridge-loading">
+        Loading items...
+      </div>
+    } @else {
+      <app-fridge-table [items]="filteredItems()"></app-fridge-table>
+    }
+
   </main>
 </div>

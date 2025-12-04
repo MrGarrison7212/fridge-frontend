@@ -8,7 +8,7 @@ import {MatButtonModule} from '@angular/material/button';
   selector: 'app-app-footer',
   imports: [CommonModule, MatToolbarModule, MatIconModule, MatButtonModule],
   templateUrl: './app-footer.html',
-  styleUrl: './app-footer.scss',
+  styleUrls: ['./app-footer.scss', 'app-footer.tw.css']
 })
 export class AppFooter {
   readonly currentYear = new Date().getFullYear();

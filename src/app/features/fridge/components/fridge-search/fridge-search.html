@@ -1,0 +1,9 @@
+<div class="fridge-search-shell">
+  <input
+    type="text"
+    class="fridge-search-input"
+    placeholder="Search by name..."
+    [value]="search()"
+    (input)="onSearchChange(($any($event.target)).value)"
+  />
+</div>

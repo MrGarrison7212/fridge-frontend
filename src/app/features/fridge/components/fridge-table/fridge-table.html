@@ -1,0 +1,52 @@
+<div class="fridge-table-wrapper">
+  <table class="fridge-table">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Qty</th>
+      <th>Stored at</th>
+      <th>Best before</th>
+      <th>Status</th>
+    </tr>
+    </thead>
+
+    <tbody>
+      @if (!items().length) {
+        <tr>
+          <td colspan="6" class="fridge-table-empty">
+            Your fridge is empty. Add your first item.
+          </td>
+        </tr>
+      } @else {
+        @for (item of items(); track item.id) {
+          <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.category }}</td>
+            <td>{{ item.quantity }} {{ item.unit }}</td>
+            <td>{{ item.storedAt }}</td>
+            <td>{{ item.bestBefore }}</td>
+            <td>
+              @let status = expiryStatus(item.bestBefore);
+
+              <span
+                class="status-badge"
+                [class.status-badge-expired]="status === ExpiryStatus.Expired"
+                [class.status-badge-soon]="status === ExpiryStatus.Soon"
+                [class.status-badge-ok]="status === ExpiryStatus.Ok"
+              >
+                @if (status === ExpiryStatus.Expired) {
+                  Expired
+                } @else if (status === ExpiryStatus.Soon) {
+                  Soon
+                } @else {
+                  OK
+                }
+              </span>
+            </td>
+          </tr>
+        }
+      }
+    </tbody>
+  </table>
+</div>

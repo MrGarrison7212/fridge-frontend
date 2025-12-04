@@ -8,7 +8,7 @@ import {MatIconModule} from '@angular/material/icon';
   selector: 'app-app-header',
   imports: [CommonModule, MatToolbarModule, MatIconModule, MatButtonModule],
   templateUrl: './app-header.html',
-  styleUrl: './app-header.scss',
+  styleUrls: ['./app-header.scss', 'app-header.tw.css']
 })
 export class AppHeader {
   readonly appTitle = 'My Fridge';

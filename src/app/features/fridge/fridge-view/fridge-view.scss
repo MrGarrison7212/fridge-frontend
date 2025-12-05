@@ -1,4 +1,30 @@
 :host {
   display: block;
-  flex: 1;
+}
+
+.fridge-title {
+  color: var(--mat-sys-on-surface);
+}
+
+.fridge-add-btn {
+  background-color: var(--mat-sys-primary);
+  color: var(--mat-sys-on-primary);
+  border: none;
+}
+
+.fridge-add-btn:hover {
+  background-color: color-mix(
+      in srgb,
+      var(--mat-sys-primary) 90%,
+      var(--mat-sys-surface) 10%
+  );
+}
+
+.fridge-error {
+  background-color: var(--mat-sys-error-container);
+  color: var(--mat-sys-on-error-container);
+}
+
+.fridge-loading {
+  color: var(--mat-sys-on-surface-variant);
 }

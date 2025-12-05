@@ -8,25 +8,19 @@
   @apply w-full border-collapse text-sm;
 }
 
-.fridge-table thead {
-  @apply bg-slate-100;
-}
-
 .fridge-table th,
 .fridge-table td {
-  @apply px-3 py-2 border-b border-slate-200;
+  @apply px-3 py-2 border-b;
 }
 
 .fridge-table th {
-  @apply text-left font-semibold text-slate-700;
+  @apply text-left font-semibold;
 }
 
 .fridge-table tbody tr:hover {
-  @apply bg-slate-50;
+  @apply transition;
 }
 
 .fridge-table-delete-btn {
-  @apply px-2 py-1 text-xs rounded-full;
-  @apply border border-red-300 text-red-600 bg-white;
-  @apply hover:bg-red-50;
+  @apply px-2 py-1 text-xs rounded-full border;
 }

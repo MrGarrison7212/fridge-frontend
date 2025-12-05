@@ -1,3 +1,23 @@
 :host {
   display: block;
 }
+
+.fridge-search-input {
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  border: 1px solid var(--mat-sys-outline-variant);
+}
+
+.fridge-search-input::placeholder {
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.fridge-search-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px color-mix(
+      in srgb,
+      var(--mat-sys-primary) 60%,
+      transparent 40%
+  );
+  border-color: transparent;
+}

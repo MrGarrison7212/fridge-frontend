@@ -8,6 +8,18 @@
   color: var(--mat-sys-on-surface-variant);
 }
 
+.fridge-table thead {
+  background-color: var(--mat-sys-surface-variant);
+}
+
+.fridge-table th {
+  color: var(--mat-sys-on-surface);
+}
+
+.fridge-table tbody tr:hover {
+  background-color: var(--mat-sys-surface-container-low);
+}
+
 .status-badge {
   display: inline-flex;
   align-items: center;
@@ -18,16 +30,26 @@
 }
 
 .status-badge-expired {
-  background-color: #fee2e2;
-  color: #b91c1c;
+  background-color: var(--mat-sys-error-container);
+  color: var(--mat-sys-on-error-container);
 }
 
 .status-badge-soon {
-  background-color: #fef3c7;
-  color: #92400e;
+  background-color: var(--mat-sys-secondary-container);
+  color: var(--mat-sys-on-secondary-container);
 }
 
 .status-badge-ok {
-  background-color: #dcfce7;
-  color: #166534;
+  background-color: var(--mat-sys-tertiary-container);
+  color: var(--mat-sys-on-tertiary-container);
+}
+
+.fridge-table-delete-btn {
+  background-color: transparent;
+  color: var(--mat-sys-error);
+  border-color: var(--mat-sys-error);
+}
+
+.fridge-table-delete-btn:hover {
+  background-color: var(--mat-sys-error-container);
 }

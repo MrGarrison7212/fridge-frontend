@@ -8,13 +8,14 @@
       <th>Stored at</th>
       <th>Best before</th>
       <th>Status</th>
+      <th>Actions</th>
     </tr>
     </thead>
 
     <tbody>
       @if (!items().length) {
         <tr>
-          <td colspan="6" class="fridge-table-empty">
+          <td colspan="7" class="fridge-table-empty">
             Your fridge is empty. Add your first item.
           </td>
         </tr>
@@ -43,6 +44,15 @@
                   OK
                 }
               </span>
+            </td>
+            <td>
+              <button
+                type="button"
+                class="fridge-table-delete-btn"
+                (click)="onDeleteClick(item.id, $event)"
+              >
+                Delete
+              </button>
             </td>
           </tr>
         }

@@ -2,9 +2,7 @@ import {computed, inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ApiUrlService} from '../../../core/services/api-url.service';
 import {Observable} from 'rxjs';
-import {FridgeItem} from '../interface/fridge-item';
-
-type FridgeItemRecDto = Omit<FridgeItem, 'id'>
+import {FridgeItem, FridgeItemCreateRequest} from '../interface/fridge-item';
 
 @Injectable({
   providedIn: 'root',
@@ -23,11 +21,11 @@ export class FridgeItemHttpService {
     return this.httpClient.get<FridgeItem>(`${this.fridgeItemsRequestUrl()}/${id}`);
   }
 
-  create(item: FridgeItemRecDto): Observable<FridgeItem> {
+  create(item: FridgeItemCreateRequest): Observable<FridgeItem> {
     return this.httpClient.post<FridgeItem>(this.fridgeItemsRequestUrl(), item);
   }
 
-  update(id: number, item: FridgeItemRecDto): Observable<FridgeItem> {
+  update(id: number, item: FridgeItemCreateRequest): Observable<FridgeItem> {
     return this.httpClient.put<FridgeItem>(`${this.fridgeItemsRequestUrl()}/${id}`, item);
   }
 

@@ -2,3 +2,23 @@
   display: block;
   height: 100%;
 }
+
+.app-shell {
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+}
+
+.app-main {
+  background: radial-gradient(
+      circle at top,
+      color-mix(in srgb, var(--mat-sys-on-surface-variant) 30%, var(--mat-sys-surface) 10%) 0%,
+      color-mix(in srgb, var(--mat-sys-on-surface-variant) 30%, var(--mat-sys-surface) 10%) 40%,
+      var(--mat-sys-surface) 100%
+  );
+}
+
+
+
+
+
+

@@ -1,3 +1,12 @@
 :host {
   display: block;
 }
+
+.app-footer-shell {
+  background-color: var(--mat-sys-surface-container-high);
+  border-top: 1px solid var(--mat-sys-outline-variant);
+}
+
+.app-footer-text {
+  color: var(--mat-sys-on-surface-variant);
+}

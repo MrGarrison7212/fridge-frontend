@@ -1,14 +1,13 @@
 @import "tailwindcss";
 
 .app-shell {
-  @apply min-h-screen;
-  @apply flex flex-col;
-  background-color: var(--mat-sys-surface);
+  @apply min-h-screen flex flex-col;
 }
 
 .app-main {
-  @apply flex-1;
-  @apply flex;
-  @apply justify-center;
-  @apply px-4 py-6;
+  @apply flex-1 px-40 py-40;
+}
+
+.app-main-inner {
+  @apply w-full max-w-5xl mx-auto;
 }

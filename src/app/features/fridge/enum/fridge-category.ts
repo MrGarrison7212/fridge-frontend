@@ -1,8 +1,8 @@
 export enum FridgeCategory {
   Dairy = 'DAIRY',
   Meat = 'MEAT',
-  Vegetables = 'VEGETABLES',
+  Vegetables = 'VEGETABLE',
   Fruit = 'FRUIT',
-  Drinks = 'DRINKS',
+  Drinks = 'DRINK',
   Other = 'OTHER'
 }

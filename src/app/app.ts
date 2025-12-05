@@ -7,7 +7,7 @@ import {AppFooter} from './core/layout/app-footer/app-footer';
   selector: 'app-root',
   imports: [RouterOutlet, AppHeader, AppFooter],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrls: ['./app.scss','app.tw.css']
 })
 export class App {
   protected readonly title = signal('fridge-frontend');

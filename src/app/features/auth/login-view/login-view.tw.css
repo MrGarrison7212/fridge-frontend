@@ -1,49 +1,48 @@
 @import "tailwindcss";
 
 .login-shell {
-  @apply min-h-screen flex items-center justify-center;
-  @apply bg-gradient-to-br from-sky-100 to-emerald-100;
+  @apply w-full flex items-center justify-center px-4 py-10;
 }
 
 .login-card {
-  @apply w-full max-w-md bg-white rounded-2xl shadow-lg p-8;
+  @apply w-full max-w-md rounded-2xl shadow-lg p-8;
 }
 
 .login-title {
-  @apply text-2xl font-bold text-slate-800 text-center mb-2;
+  @apply text-2xl font-semibold text-center mb-1;
 }
 
 .login-subtitle {
-  @apply text-sm text-slate-500 text-center mb-6;
+  @apply text-sm text-center mb-4;
 }
 
 .login-error {
-  @apply mb-4 px-3 py-2 rounded-lg;
-  @apply bg-red-50 text-red-700 text-sm;
+  @apply mb-4 px-3 py-2 rounded-lg text-sm;
 }
 
 .login-form {
   @apply flex flex-col gap-4;
 }
 
-.login-label {
+.login-field {
   @apply flex flex-col gap-1;
 }
 
 .login-label-text {
-  @apply text-sm font-medium text-slate-700;
+  @apply text-xs font-semibold;
 }
 
 .login-input {
-  @apply border border-slate-300 rounded-lg px-3 py-2;
-  @apply text-sm;
-  @apply focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400;
+  @apply border rounded-lg px-3 py-2 text-sm;
+  @apply focus:outline-none focus:ring-2 focus:border-transparent;
 }
 
 .login-submit-btn {
-  @apply mt-2 w-full rounded-full;
-  @apply bg-emerald-500 text-white text-sm font-medium;
-  @apply px-4 py-2;
-  @apply shadow hover:bg-emerald-600 disabled:opacity-60 disabled:cursor-not-allowed;
-  @apply transition;
+  @apply mt-2 w-full rounded-full py-2 text-sm font-medium;
+  @apply shadow disabled:opacity-60 disabled:cursor-not-allowed;
+  @apply transition-transform;
+}
+
+.login-submit-btn:hover:not(:disabled) {
+  @apply -translate-y-0.5;
 }

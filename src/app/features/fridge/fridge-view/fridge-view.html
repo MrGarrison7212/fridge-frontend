@@ -16,6 +16,14 @@
       </div>
     }
 
+    @if (isAddOpen()) {
+      <app-fridge-item-add
+        [saving]="isSaving()"
+        (add)="onAddItem($event)"
+        (cancel)="onAddCancel()"
+      ></app-fridge-item-add>
+    }
+
     <app-fridge-search
       [search]="search()"
       (searchChange)="onSearchChange($event)"
@@ -26,7 +34,10 @@
         Loading items...
       </div>
     } @else {
-      <app-fridge-table [items]="filteredItems()"></app-fridge-table>
+      <app-fridge-table
+        [items]="filteredItems()"
+        (deleteItem)="onDeleteItem($event)"
+      ></app-fridge-table>
     }
 
   </main>

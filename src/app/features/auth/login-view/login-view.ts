@@ -2,11 +2,18 @@ import {Component, EventEmitter, inject, signal} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Router, Routes} from '@angular/router';
 import {AuthService} from '../../../core/auth/auth.service';
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
 
 @Component({
   selector: 'app-login-view',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule],
   templateUrl: './login-view.html',
   styleUrls: ['./login-view.scss', './login-view.tw.css']
 })

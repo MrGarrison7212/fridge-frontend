@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+.fridge-add-form {
+  @apply w-full max-w-5xl mx-auto;
+  @apply mb-4 p-4 border rounded-lg;
+  @apply flex flex-col gap-3;
+}
+
+.fridge-add-row {
+  @apply flex flex-col md:flex-row gap-3;
+}
+
+.fridge-add-field {
+  @apply flex flex-col flex-1 gap-1;
+}
+
+.fridge-add-field label {
+  @apply text-xs font-medium;
+}
+
+.fridge-add-field input,
+.fridge-add-field select,
+.fridge-add-field textarea {
+  @apply border rounded px-2 py-1 text-sm;
+  @apply focus:outline-none;
+}
+
+.fridge-add-notes textarea {
+  @apply resize-y;
+}
+
+.fridge-add-actions {
+  @apply flex justify-end gap-2 pt-2;
+}
+
+.btn-primary {
+  @apply px-4 py-1.5 rounded-full text-sm font-semibold;
+  @apply disabled:opacity-60 disabled:cursor-not-allowed;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: color-mix(
+    in srgb,
+    var(--mat-sys-primary) 90%,
+    var(--mat-sys-surface) 10%
+  );
+}
+
+.btn-secondary {
+  @apply px-4 py-1.5 rounded-full text-sm font-medium;
+  @apply border rounded-full;
+  @apply disabled:opacity-60 disabled:cursor-not-allowed;
+}

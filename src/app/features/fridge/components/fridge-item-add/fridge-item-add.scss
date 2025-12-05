@@ -1,0 +1,32 @@
+:host {
+  display: block;
+}
+
+.fridge-add-form {
+  background-color: var(--mat-sys-surface);
+  border-color: var(--mat-sys-outline-variant);
+}
+
+.fridge-add-field label {
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.fridge-add-field input,
+.fridge-add-field select,
+.fridge-add-field textarea {
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  border-color: var(--mat-sys-outline-variant);
+}
+
+.btn-primary {
+  background-color: var(--mat-sys-primary);
+  color: var(--mat-sys-on-primary);
+  border: none;
+}
+
+.btn-secondary {
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  border-color: var(--mat-sys-outline-variant);
+}

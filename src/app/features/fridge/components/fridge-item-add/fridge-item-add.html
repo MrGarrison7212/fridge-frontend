@@ -1,0 +1,111 @@
+<form class="fridge-add-form" (submit)="onSubmit($event)">
+  <div class="fridge-add-row">
+    <div class="fridge-add-field">
+      <label for="name">Name</label>
+      <input
+        id="name"
+        type="text"
+        required
+        [value]="form.name"
+        (input)="form.name = ($any($event.target)).value"
+      />
+    </div>
+
+    <div class="fridge-add-field">
+      <label for="category">Category</label>
+      <select
+        id="category"
+        required
+        [value]="form.category"
+        (change)="form.category = ($any($event.target)).value"
+      >
+        <option [value]="FridgeCategory.Dairy">Dairy</option>
+        <option [value]="FridgeCategory.Meat">Meat</option>
+        <option [value]="FridgeCategory.Vegetables">Vegetables</option>
+        <option [value]="FridgeCategory.Fruit">Fruit</option>
+        <option [value]="FridgeCategory.Drinks">Drinks</option>
+        <option [value]="FridgeCategory.Other">Other</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="fridge-add-row">
+    <div class="fridge-add-field">
+      <label for="quantity">Quantity</label>
+      <input
+        id="quantity"
+        type="number"
+        min="1"
+        required
+        [value]="form.quantity"
+        (input)="form.quantity = +($any($event.target)).value || 1"
+      />
+    </div>
+
+    <div class="fridge-add-field">
+      <label for="unit">Unit</label>
+      <input
+        id="unit"
+        type="text"
+        required
+        [value]="form.unit"
+        (input)="form.unit = ($any($event.target)).value"
+      />
+    </div>
+  </div>
+
+  <div class="fridge-add-row">
+    <div class="fridge-add-field">
+      <label for="storedAt">Stored at</label>
+      <input
+        id="storedAt"
+        type="date"
+        required
+        [value]="form.storedAt"
+        (input)="form.storedAt = ($any($event.target)).value"
+      />
+    </div>
+
+    <div class="fridge-add-field">
+      <label for="bestBefore">Best before</label>
+      <input
+        id="bestBefore"
+        type="date"
+        required
+        [value]="form.bestBefore"
+        (input)="form.bestBefore = ($any($event.target)).value"
+      />
+    </div>
+  </div>
+
+  <div class="fridge-add-row">
+    <div class="fridge-add-field fridge-add-notes">
+      <label for="notes">Notes</label>
+      <textarea
+        id="notes"
+        rows="2"
+        [value]="form.notes ?? ''"
+        (input)="form.notes = ($any($event.target)).value"
+      ></textarea>
+    </div>
+  </div>
+
+  <div class="fridge-add-actions">
+    <button
+      type="button"
+      class="btn-secondary"
+      (click)="onCancelClick()"
+      [disabled]="saving()"
+    >
+      Cancel
+    </button>
+
+    <button
+      type="submit"
+      class="btn-primary"
+      [disabled]="saving()"
+    >
+      Save
+    </button>
+  </div>
+</form>

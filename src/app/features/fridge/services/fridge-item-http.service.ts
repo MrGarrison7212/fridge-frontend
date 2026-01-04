@@ -1,8 +1,9 @@
 import {computed, inject, Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {ApiUrlService} from '../../../core/services/api-url.service';
 import {Observable} from 'rxjs';
 import {FridgeItem, FridgeItemCreateRequest} from '../interface/fridge-item';
+import {FridgeItemsPage} from '../interface/fridge-items-page';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +16,24 @@ export class FridgeItemHttpService {
 
   getAll(): Observable<FridgeItem[]> {
     return this.httpClient.get<FridgeItem[]>(this.fridgeItemsRequestUrl());
+  }
+
+  getPage(
+    page: number,
+    size: number,
+    sortBy: string,
+    direction: 'asc' | 'desc',
+
+  ): Observable<FridgeItemsPage<FridgeItem>>{
+    let params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString())
+      .set('sortBy', sortBy)
+      .set('direction', direction);
+
+    return this.httpClient.get<FridgeItemsPage<FridgeItem>>(
+      `${this.fridgeItemsRequestUrl()}/page`, {params: params}
+    );
   }
 
   getById(id: number): Observable<FridgeItem> {

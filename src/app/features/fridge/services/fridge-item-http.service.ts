@@ -25,14 +25,14 @@ export class FridgeItemHttpService {
     direction: 'asc' | 'desc',
 
   ): Observable<FridgeItemsPage<FridgeItem>>{
-    const params = new HttpParams()
-      .set('page', page.toString())
-      .set('size', size.toString())
-      .set('sortBy', sortBy)
-      .set('direction', direction);
+    const params = {
+      page: page.toString(),
+      size: size.toString(),
+      sort: `${sortBy},${direction}`,
+    };
 
     return this.httpClient.get<FridgeItemsPage<FridgeItem>>(
-      `${this.fridgeItemsRequestUrl()}/page`, { params: params}
+      `${this.fridgeItemsRequestUrl()}/page`, { params }
     );
   }
 

@@ -20,9 +20,17 @@ export class FridgeView {
   private readonly _items = signal<FridgeItem[]>([]);
   readonly isLoading = signal(false);
   readonly error = signal<string | null>(null);
-
+//search
   readonly search = signal('');
-
+//pagging
+  readonly page = signal(0);
+  readonly size = signal(5);
+  readonly totalPages = signal(0);
+  readonly totalElements = signal(0);
+//sort
+  readonly sortBy = signal<'storedAt' | 'bestBefore' | 'name'>('storedAt');
+  readonly direction = signal<'asc' | 'desc'>('asc');
+//add
   readonly isAddOpen = signal(false);
   readonly isSaving  = signal(false);
 
@@ -40,9 +48,16 @@ export class FridgeView {
     this.isLoading.set(true);
     this.error.set(null);
 
-    this.http.getAll().subscribe({
-      next: (items) => {
-        this._items.set(items);
+    this.http.getAllPaged(
+      this.page(),
+      this.size(),
+      this.sortBy(),
+      this.direction(),
+    ).subscribe({
+      next: (page) => {
+        this._items.set(page.content);
+        this.totalPages.set(page.totalPages);
+        this.totalElements.set(page.totalElements);
         this.isLoading.set(false);
       },
       error: (err) => {
@@ -70,10 +85,10 @@ export class FridgeView {
     this.error.set(null);
 
     this.http.create(createRequest).subscribe({
-      next: (created) => {
-        this._items.update((items) => [created, ...items]);
+      next: () => {
         this.isSaving.set(false);
         this.isAddOpen.set(false);
+        this.reload();
       },
       error: (err) => {
         console.error(err);
@@ -91,9 +106,7 @@ export class FridgeView {
 
     this.http.delete(id).subscribe({
       next: () => {
-        this._items.update((items) =>
-          items.filter((item) => item.id !== id)
-        );
+        this.reload();
       },
       error: (err) => {
         console.error(err);
@@ -101,4 +114,42 @@ export class FridgeView {
       },
     });
   }
+
+  goToPage(page: number): void {
+    if(page < 0 || page >= this.totalPages()) {
+      return;
+    }
+    this.page.set(page);
+    this.reload();
+  }
+
+  nextPage(): void {
+    this.goToPage(this.page() + 1);
+  }
+
+  prevPage(): void {
+    this.goToPage(this.page() - 1);
+  }
+
+  onSort(field: 'storedAt' | 'bestBefore' | 'name'): void {
+    // ako klikneš isti field, samo promeni smer
+    if (this.sortBy() === field) {
+      this.direction.set(this.direction() === 'asc' ? 'desc' : 'asc');
+    } else {
+      // ako je novi field, setuj ga i vrati smer na ASC
+      this.sortBy.set(field);
+      this.direction.set('asc');
+    }
+
+    // kod promene sort-a obično se vraćamo na prvu stranu
+    this.page.set(0);
+    this.reload();
+  }
+
+  toggleDirection(): void {
+    this.direction.set(this.direction() === 'asc' ? 'desc' : 'asc');
+    this.page.set(0);
+    this.reload();
+  }
+
 }

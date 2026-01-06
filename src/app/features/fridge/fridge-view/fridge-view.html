@@ -29,6 +29,47 @@
       (searchChange)="onSearchChange($event)"
     ></app-fridge-search>
 
+
+    <div class="fridge-sort-bar">
+      <span>Sort by:</span>
+
+      <button
+        type="button"
+        (click)="onSort('storedAt')"
+        [class.active]="sortBy() === 'storedAt'"
+      >
+        Stored date
+      </button>
+
+      <button
+        type="button"
+        (click)="onSort('bestBefore')"
+        [class.active]="sortBy() === 'bestBefore'"
+      >
+        Best-before date
+      </button>
+
+      <button
+        type="button"
+        (click)="onSort('name')"
+        [class.active]="sortBy() === 'name'"
+      >
+        Name
+      </button>
+
+      <button
+        type="button"
+        class="direction-btn"
+        (click)="toggleDirection()"
+      >
+        {{ direction() === 'asc' ? 'ASC ↑' : 'DESC ↓' }}
+      </button>
+    </div>
+
+
+
+
+
     @if (isLoading()) {
       <div class="fridge-loading">
         Loading items...
@@ -39,6 +80,26 @@
         (deleteItem)="onDeleteItem($event)"
       ></app-fridge-table>
     }
+
+    <div class="fridge-pagination">
+      <button
+        type="button"
+        (click)="prevPage()"
+        [disabled]="page() === 0"
+      >
+        ‹ Prev
+      </button>
+
+      <span>Page {{ page() + 1 }} of {{ totalPages() }}</span>
+
+      <button
+        type="button"
+        (click)="nextPage()"
+        [disabled]="page() + 1 >= totalPages()"
+      >
+        Next ›
+      </button>
+    </div>
 
   </main>
 </div>

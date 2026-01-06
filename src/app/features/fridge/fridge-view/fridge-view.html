@@ -29,43 +29,12 @@
       (searchChange)="onSearchChange($event)"
     ></app-fridge-search>
 
-
-    <div class="fridge-sort-bar">
-      <span>Sort by:</span>
-
-      <button
-        type="button"
-        (click)="onSort('storedAt')"
-        [class.active]="sortBy() === 'storedAt'"
-      >
-        Stored date
-      </button>
-
-      <button
-        type="button"
-        (click)="onSort('bestBefore')"
-        [class.active]="sortBy() === 'bestBefore'"
-      >
-        Best-before date
-      </button>
-
-      <button
-        type="button"
-        (click)="onSort('name')"
-        [class.active]="sortBy() === 'name'"
-      >
-        Name
-      </button>
-
-      <button
-        type="button"
-        class="direction-btn"
-        (click)="toggleDirection()"
-      >
-        {{ direction() === 'asc' ? 'ASC ↑' : 'DESC ↓' }}
-      </button>
-    </div>
-
+    <app-fridge-sort-bar
+      [sortBy]="sortBy()"
+      [direction]="direction()"
+      (sort)="onSort($event)"
+      (toggleDirection)="toggleDirection()"
+    ></app-fridge-sort-bar>
 
 
 

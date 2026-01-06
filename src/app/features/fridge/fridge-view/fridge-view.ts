@@ -6,11 +6,12 @@ import {FridgeTable} from '../components/fridge-table/fridge-table';
 import {FridgeSearch} from '../components/fridge-search/fridge-search';
 import {FridgeItemAdd} from '../components/fridge-item-add/fridge-item-add';
 import {filterFridgeItems} from '../utils/fridge-filter.util';
+import {FridgeSortBar} from '../components/fridge-sort-bar/fridge-sort-bar';
 
 @Component({
   selector: 'app-fridge-view',
   standalone: true,
-  imports: [CommonModule, FridgeTable, FridgeSearch, FridgeItemAdd],
+  imports: [CommonModule, FridgeTable, FridgeSearch, FridgeItemAdd, FridgeSortBar],
   templateUrl: './fridge-view.html',
   styleUrls: ['./fridge-view.scss', './fridge-view.tw.css']
 })
@@ -132,7 +133,7 @@ export class FridgeView {
   }
 
   onSort(field: 'storedAt' | 'bestBefore' | 'name'): void {
-    // ako klikneš isti field, samo promeni smer
+    // ako klikneš istifield, samo promeni smer
     if (this.sortBy() === field) {
       this.direction.set(this.direction() === 'asc' ? 'desc' : 'asc');
     } else {

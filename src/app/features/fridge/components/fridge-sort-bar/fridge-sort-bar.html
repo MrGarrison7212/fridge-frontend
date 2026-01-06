@@ -1,0 +1,35 @@
+<div class="fridge-sort-bar">
+  <span>Sort by:</span>
+
+  <button
+    type="button"
+    (click)="onSortClick('storedAt')"
+    [class.active]="sortBy === 'storedAt'"
+  >
+    Stored date
+  </button>
+
+  <button
+    type="button"
+    (click)="onSortClick('bestBefore')"
+    [class.active]="sortBy === 'bestBefore'"
+  >
+    Best-before date
+  </button>
+
+  <button
+    type="button"
+    (click)="onSortClick('name')"
+    [class.active]="sortBy === 'name'"
+  >
+    Name
+  </button>
+
+  <button
+    type="button"
+    class="direction-btn"
+    (click)="onToggleDirectionClick()"
+  >
+    {{ direction === 'asc' ? 'ASC ↑' : 'DESC ↓' }}
+  </button>
+</div>

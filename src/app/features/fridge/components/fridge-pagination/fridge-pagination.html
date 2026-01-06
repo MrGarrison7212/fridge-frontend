@@ -1,0 +1,19 @@
+<div class="fridge-pagination">
+  <button
+    type="button"
+    (click)="onPrevClick()"
+    [disabled]="page === 0"
+  >
+    ‹ Prev
+  </button>
+
+  <span>Page {{ page + 1 }} of {{ totalPages }}</span>
+
+  <button
+    type="button"
+    (click)="onNextClick()"
+    [disabled]="page + 1 >= totalPages"
+  >
+    Next ›
+  </button>
+</div>

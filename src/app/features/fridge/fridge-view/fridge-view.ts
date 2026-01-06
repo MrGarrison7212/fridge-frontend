@@ -7,11 +7,12 @@ import {FridgeSearch} from '../components/fridge-search/fridge-search';
 import {FridgeItemAdd} from '../components/fridge-item-add/fridge-item-add';
 import {filterFridgeItems} from '../utils/fridge-filter.util';
 import {FridgeSortBar} from '../components/fridge-sort-bar/fridge-sort-bar';
+import {FridgePagination} from '../components/fridge-pagination/fridge-pagination';
 
 @Component({
   selector: 'app-fridge-view',
   standalone: true,
-  imports: [CommonModule, FridgeTable, FridgeSearch, FridgeItemAdd, FridgeSortBar],
+  imports: [CommonModule, FridgeTable, FridgeSearch, FridgeItemAdd, FridgeSortBar, FridgePagination],
   templateUrl: './fridge-view.html',
   styleUrls: ['./fridge-view.scss', './fridge-view.tw.css']
 })

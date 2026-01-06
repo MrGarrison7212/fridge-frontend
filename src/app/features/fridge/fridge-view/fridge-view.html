@@ -36,9 +36,6 @@
       (toggleDirection)="toggleDirection()"
     ></app-fridge-sort-bar>
 
-
-
-
     @if (isLoading()) {
       <div class="fridge-loading">
         Loading items...
@@ -50,25 +47,13 @@
       ></app-fridge-table>
     }
 
-    <div class="fridge-pagination">
-      <button
-        type="button"
-        (click)="prevPage()"
-        [disabled]="page() === 0"
-      >
-        ‹ Prev
-      </button>
+    <app-fridge-pagination
+      [page]="page()"
+      [totalPages]="totalPages()"
+      (prev)="prevPage()"
+      (next)="nextPage()"
+    ></app-fridge-pagination>
 
-      <span>Page {{ page() + 1 }} of {{ totalPages() }}</span>
-
-      <button
-        type="button"
-        (click)="nextPage()"
-        [disabled]="page() + 1 >= totalPages()"
-      >
-        Next ›
-      </button>
-    </div>
 
   </main>
 </div>

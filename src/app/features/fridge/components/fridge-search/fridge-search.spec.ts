@@ -20,4 +20,12 @@ describe('FridgeSearch', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should emit searchChange when onSearchChange is called', () => {
+    const emitSpy = vi.spyOn(component.searchChange, 'emit');
+
+    component.onSearchChange('milk');
+
+    expect(emitSpy).toHaveBeenCalledWith('milk');
+  });
 });

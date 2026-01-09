@@ -134,16 +134,13 @@ export class FridgeView {
   }
 
   onSort(field: 'storedAt' | 'bestBefore' | 'name'): void {
-    // ako klikneš istifield, samo promeni smer
     if (this.sortBy() === field) {
       this.direction.set(this.direction() === 'asc' ? 'desc' : 'asc');
     } else {
-      // ako je novi field, setuj ga i vrati smer na ASC
       this.sortBy.set(field);
       this.direction.set('asc');
     }
 
-    // kod promene sort-a obično se vraćamo na prvu stranu
     this.page.set(0);
     this.reload();
   }

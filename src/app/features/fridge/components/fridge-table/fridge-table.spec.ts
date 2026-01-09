@@ -13,6 +13,9 @@ describe('FridgeTable', () => {
     .compileComponents();
 
     fixture = TestBed.createComponent(FridgeTable);
+
+    fixture.componentRef.setInput('items', []);
+
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

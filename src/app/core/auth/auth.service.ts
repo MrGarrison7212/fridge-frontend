@@ -9,6 +9,7 @@ import {AuthResponse} from '../interfaces/auth-response';
 export class AuthService {
 
   private readonly httpClient = inject(HttpClient);
+  private readonly STORAGE_KEY = 'fridge_jwt_token';
 
   private readonly _authorizationHeader = signal<string | null>(null);
   private readonly _isLoading = signal(false);
@@ -17,6 +18,14 @@ export class AuthService {
   readonly isAuthenticated = computed(() => this._authorizationHeader() !== null);
   readonly isLoading = computed(() => this._isLoading());
   readonly errorMessage = computed(() => this._errorMessage());
+
+  constructor() {
+    const storedToken = localStorage.getItem(this.STORAGE_KEY);
+    if(storedToken) {
+      this._authorizationHeader.set(`Bearer ${storedToken}`);
+    }
+  }
+
 
   login(username: string, password: string): Observable<void> {
       this._isLoading.set(true);
@@ -27,7 +36,10 @@ export class AuthService {
         .post<AuthResponse>('/api/auth/login', {username, password})
         .pipe(
           tap((response) => {
-            const headerValue = `Bearer ${response.token}`;
+            const token = response.token
+            const headerValue = `Bearer ${token}`;
+
+            localStorage.setItem(this.STORAGE_KEY, token);
             this._isLoading.set(false);
             this._authorizationHeader.set(headerValue);
           }),
@@ -40,6 +52,7 @@ export class AuthService {
 
   logout() : void {
     this._authorizationHeader.set(null);
+    localStorage.removeItem(this.STORAGE_KEY);
   }
 
   setError(message : string | null): void {

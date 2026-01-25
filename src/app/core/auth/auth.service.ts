@@ -1,6 +1,7 @@
 import {computed, inject, Injectable, signal} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {map, Observable, tap, finalize} from 'rxjs';
+import {AuthResponse} from '../interfaces/auth-response';
 
 @Injectable({
   providedIn: 'root',
@@ -18,20 +19,17 @@ export class AuthService {
   readonly errorMessage = computed(() => this._errorMessage());
 
   login(username: string, password: string): Observable<void> {
-      const basicToken = btoa(`${username}:${password}`);
-      const headerValue = `Basic ${basicToken}`;
-
       this._isLoading.set(true);
       this._errorMessage.set(null);
 
-      const headers = new HttpHeaders({ Authorization: headerValue });
 
       return this.httpClient
-        .get('/api/items', { headers})
+        .post<AuthResponse>('/api/auth/login', {username, password})
         .pipe(
-          tap(() => {
-            this._authorizationHeader.set(headerValue);
+          tap((response) => {
+            const headerValue = `Bearer ${response.token}`;
             this._isLoading.set(false);
+            this._authorizationHeader.set(headerValue);
           }),
           map(() => void 0),
           finalize(() => {
